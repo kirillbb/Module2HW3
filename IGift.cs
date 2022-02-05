@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Module2HW3
 {
-    interface IGift
+    public interface IGift
     {
+        public int WeightOfTheGift(Candy[] candies);
+        public void PrintGift(Candy[] candies);
     }
 }

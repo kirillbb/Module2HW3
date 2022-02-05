@@ -8,13 +8,34 @@ namespace Module2HW3
 {
     public class Gift : IGift
     {
-        public Candy[] gift = new Candy[10];
+        public Candy[] candies = new Candy[10];
 
-        public int CollectAGift()
+        int Weight { get; set; }
+        public void CollectAGift(Candy candy, int index)
+        {
+            candies[index] = candy;
+        }
+
+        public int WeightOfTheGift(Candy[] candies)
+        {
+            foreach (var item in candies)
+            {
+                Weight += item.WeightInGrams;
+            }
+
+            return Weight;
+        }
+
+        public void PrintGift(Candy[] candies)
         {
 
+            foreach (var item in candies)
+            {
+                Console.WriteLine($"{item.Name} ({item.Manufacturer}) {item.WeightInGrams} grams - {item.Price}$");
+            }
 
-            return 0;
+            Console.WriteLine();
+            Console.WriteLine($"Weight of the gift is {WeightOfTheGift(candies)} grams");
         }
     }
 }
