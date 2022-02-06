@@ -2,7 +2,7 @@
 
 namespace Module2HW3
 {
-    class Program
+    public class Program
     {
         public static void Main()
         {

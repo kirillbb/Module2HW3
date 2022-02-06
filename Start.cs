@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Module2HW3
 {
@@ -10,28 +6,37 @@ namespace Module2HW3
     {
         public static void Run()
         {
-            Gift gift = new();
+            Gift gift = new ();
+            gift.Collect();
+            var candies = gift.GetGift();
 
-            gift.CollectAGift(new Caramel("Apple", "roshen", 7, 5), 0);
-            gift.CollectAGift(new Chocolate("Choko", "milka", 100, 30), 1);
-            gift.CollectAGift(new StuffedChokolate("Nuts", "konti", 50, 15), 2);
-            gift.CollectAGift(new Lollipop("Chups", "chupa", 12, 7), 3);
-            gift.CollectAGift(new StuffedCaramel("Rak", "roshen", 3, 3), 4);
-            gift.CollectAGift(new LiqueurCaramel("DrunkCherry", "avk", 12, 10), 5);
-            gift.CollectAGift(new Caramel("apple", "roshen", 8, 5), 6);
-            gift.CollectAGift(new Chocolate("ChokoLoko", "milka", 110, 35), 7);
-            gift.CollectAGift(new StuffedChokolate("Nuts", "konti", 55, 20), 8);
-            gift.CollectAGift(new Lollipop("Chups", "chupa", 13, 8), 9);
-            
-            gift.PrintGift(gift.candies);
-            Console.WriteLine();
+            gift.PrintGift(candies);
+            Console.WriteLine($"\nWeight of the gift is {gift.WeightOfTheGift(candies)} grams");
 
-            Array.Sort(gift.candies);
+            Array.Sort(candies);
 
-            Console.WriteLine("Sorted array:");
-            gift.PrintGift(gift.candies);
+            Console.WriteLine("\nSorted array:");
+            gift.PrintGift(candies);
 
+            string name = string.Empty;
 
+            while (name == string.Empty)
+            {
+                Console.WriteLine("\n\nCandy with what name can I find?");
+                name = Console.ReadLine();
+                name = name.ToLower();
+            }
+
+            Console.WriteLine($"\nFind candy with name \"{name}\":");
+
+            try
+            {
+                Console.WriteLine(candies.FindCandy(name).ToString());
+            }
+            catch
+            {
+                Console.WriteLine("I can't find this Candy!");
+            }
         }
     }
 }
